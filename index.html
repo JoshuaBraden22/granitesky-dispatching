@@ -3,498 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GraniteSky Dispatching | American Freight Dispatching</title>
-  <meta name="description" content="GraniteSky Dispatching provides reliable truck dispatching, rate negotiation, route planning, broker communication, and nationwide support for owner-operators and small fleets." />
-
-  <style>
-    :root {
-      --navy: #0F2747;
-      --gray: #4A4F57;
-      --blue: #1E88E5;
-      --light-blue: #72C6FF;
-      --white: #FFFFFF;
-      --soft: #F4F8FC;
-      --dark: #071728;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      color: var(--dark);
-      background: var(--white);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(15, 39, 71, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      padding: 14px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: white;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    .logo-wrap img {
-      height: 48px;
-      width: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      color: white;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a:hover {
-      color: var(--light-blue);
-    }
-
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .hero {
-      min-height: 100vh;
-      background:
-        linear-gradient(90deg, rgba(7,23,40,0.92), rgba(15,39,71,0.58), rgba(15,39,71,0.25)),
-        url("hero-truck.png") center/cover no-repeat;
-      color: white;
-      display: flex;
-      align-items: center;
-      padding: 130px 24px 80px;
-    }
-
-    .hero-content {
-      max-width: 1200px;
-      margin: auto;
-      width: 100%;
-    }
-
-    .hero-box {
-      max-width: 720px;
-      animation: fadeUp 1s ease forwards;
-    }
-
-    .eyebrow {
-      color: var(--light-blue);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      line-height: 0.95;
-      margin-bottom: 18px;
-      letter-spacing: -3px;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.1;
-      margin-bottom: 18px;
-      color: var(--navy);
-    }
-
-    .hero h2 {
-      color: white;
-      font-size: clamp(1.5rem, 3vw, 2.4rem);
-      letter-spacing: -1px;
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      max-width: 650px;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 32px;
-    }
-
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 15px 26px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: 0.3s ease;
-    }
-
-    .btn.primary {
-      background: linear-gradient(135deg, var(--blue), var(--light-blue));
-      color: white;
-      box-shadow: 0 12px 30px rgba(30,136,229,0.35);
-    }
-
-    .btn.secondary {
-      border: 1px solid rgba(255,255,255,0.55);
-      color: white;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    section {
-      padding: 90px 24px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section-title {
-      max-width: 760px;
-      margin-bottom: 44px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .card {
-      background: white;
-      padding: 32px;
-      border-radius: 24px;
-      box-shadow: 0 18px 45px rgba(15,39,71,0.09);
-      border: 1px solid rgba(15,39,71,0.08);
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 60px rgba(15,39,71,0.15);
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, var(--blue), var(--light-blue));
-      color: white;
-      display: grid;
-      place-items: center;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-    }
-
-    .card h3 {
-      color: var(--navy);
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-
-    .soft {
-      background: var(--soft);
-    }
-
-    .dark {
-      background:
-        linear-gradient(rgba(15,39,71,0.94), rgba(15,39,71,0.94)),
-        url("hero-truck.png") center/cover no-repeat;
-      color: white;
-    }
-
-    .dark h2 {
-      color: white;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .feature {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.16);
-      padding: 22px;
-      border-radius: 18px;
-      font-weight: 800;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 46px;
-      align-items: center;
-    }
-
-    .photo-card {
-      min-height: 430px;
-      border-radius: 30px;
-      background: url("hero-truck.png") center/cover no-repeat;
-      box-shadow: 0 25px 70px rgba(15,39,71,0.22);
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .step {
-      padding: 34px;
-      border-left: 5px solid var(--blue);
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 18px 45px rgba(15,39,71,0.08);
-    }
-
-    .step strong {
-      color: var(--blue);
-      font-size: 2rem;
-    }
-
-    form {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(15,39,71,0.18);
-      font-size: 1rem;
-      font-family: inherit;
-    }
-
-    textarea {
-      grid-column: span 2;
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    form .btn {
-      border: none;
-      cursor: pointer;
-      grid-column: span 2;
-      font-size: 1rem;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 40px;
-    }
-
-    .contact-info {
-      background: var(--navy);
-      color: white;
-      padding: 36px;
-      border-radius: 26px;
-    }
-
-    .contact-info h2 {
-      color: white;
-    }
-
-    .contact-info a {
-      color: var(--light-blue);
-    }
-
-    footer {
-      background: #071728;
-      color: white;
-      padding: 45px 24px;
-      text-align: center;
-    }
-
-    footer img {
-      height: 70px;
-      margin: 0 auto 16px;
-    }
-
-    footer a {
-      margin: 0 10px;
-      color: var(--light-blue);
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 900px) {
-      .menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 77px;
-        left: 0;
-        width: 100%;
-        background: var(--navy);
-        flex-direction: column;
-        padding: 24px;
-        display: none;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .cards,
-      .features,
-      .steps,
-      .split,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      form {
-        grid-template-columns: 1fr;
-      }
-
-      textarea,
-      form .btn {
-        grid-column: span 1;
-      }
-
-      .hero {
-        text-align: left;
-        background:
-          linear-gradient(rgba(7,23,40,0.86), rgba(7,23,40,0.86)),
-          url("hero-truck.png") center/cover no-repeat;
-      }
-    }
-  </style>
+  <title>GraniteSky Dispatching | Supporting the Backbone of American Freight</title>
+  <meta name="description" content="Professional truck dispatching services for owner-operators and small fleets across the United States." />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 
 <body>
 
-<header>
-  <nav class="nav">
-    <a href="#home" class="logo-wrap">
+<header class="site-header">
+  <div class="container navbar">
+    <a href="index.html" class="logo">
       <img src="logo.png" alt="GraniteSky Dispatching Logo">
       <span>GraniteSky Dispatching</span>
     </a>
 
-    <button class="menu-btn" id="menuBtn">☰</button>
+    <button class="menu-btn">☰</button>
 
-    <div class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#why">Why GraniteSky</a>
-      <a href="#carrier">Become a Carrier</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+    <nav class="nav-links">
+      <a class="active" href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="why-granitesky.html">Why GraniteSky</a>
+      <a href="become-a-carrier.html">Become a Carrier</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="become-a-carrier.html">Apply Now</a>
+    </nav>
+  </div>
 </header>
 
 <section class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-box">
+  <div class="container">
+    <div class="hero-content">
       <p class="eyebrow">Nationwide Freight Dispatching</p>
       <h1>GraniteSky Dispatching</h1>
       <h2>Supporting the Backbone of American Freight.</h2>
       <p>
-        Reliable dispatching, stronger rate negotiations, reduced deadhead miles,
-        and dependable nationwide support for owner-operators and small fleets.
+        GraniteSky Dispatching helps owner-operators and small fleets stay loaded with reliable dispatching,
+        stronger rate negotiations, reduced deadhead miles, and dependable support across the United States.
       </p>
-      <div class="buttons">
-        <a href="#carrier" class="btn primary">Become a Carrier</a>
-        <a href="#contact" class="btn secondary">Request a Free Consultation</a>
+      <div class="btn-row">
+        <a href="become-a-carrier.html" class="btn btn-primary">Become a Carrier</a>
+        <a href="contact.html" class="btn btn-secondary">Request a Free Consultation</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="services">
+<section class="section">
   <div class="container">
     <div class="section-title">
-      <p class="eyebrow">Professional Dispatching</p>
-      <h2>Services Built Around Your Success</h2>
-      <p>We help keep your truck moving, your schedule organized, and your business focused on profitable freight.</p>
+      <p class="eyebrow">Our Services</p>
+      <h2>Professional Dispatching Services Built Around Your Success</h2>
+      <p>
+        We help keep your truck moving, your paperwork organized, and your business focused on profitable freight.
+      </p>
     </div>
 
-    <div class="cards">
-      <div class="card"><div class="icon">🚛</div><h3>Freight Dispatching</h3><p>We search and book quality freight while keeping your truck moving and profitable.</p></div>
-      <div class="card"><div class="icon">💵</div><h3>Rate Negotiation</h3><p>We negotiate competitive freight rates with trusted brokers to maximize your revenue.</p></div>
-      <div class="card"><div class="icon">🛣️</div><h3>Route Planning</h3><p>Reduce empty miles and improve efficiency with smarter route planning.</p></div>
-      <div class="card"><div class="icon">📞</div><h3>Broker Communication</h3><p>We manage setup packets, appointments, and load coordination from pickup to delivery.</p></div>
-      <div class="card"><div class="icon">🤝</div><h3>Driver Support</h3><p>Reliable communication and assistance before, during, and after every load.</p></div>
-      <div class="card"><div class="icon">📄</div><h3>Paperwork Assistance</h3><p>Rate confirmations, proof of delivery collection, and organized document management.</p></div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="icon">🚛</div>
+        <h3>Freight Dispatching</h3>
+        <p>We search and book quality freight while keeping your truck moving and profitable.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💵</div>
+        <h3>Rate Negotiation</h3>
+        <p>We negotiate competitive freight rates with trusted brokers to maximize your revenue.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛣️</div>
+        <h3>Route Planning</h3>
+        <p>Reduce empty miles and improve efficiency with smarter route planning.</p>
+      </div>
     </div>
+
+    <br>
+    <a href="services.html" class="btn btn-dark">View All Services</a>
   </div>
 </section>
 
-<section class="dark" id="why">
+<section class="section section-dark">
   <div class="container">
     <div class="section-title">
       <p class="eyebrow">Why GraniteSky</p>
       <h2>Why Carriers Choose GraniteSky</h2>
+      <p>
+        We represent carriers professionally, communicate clearly, and focus on long-term partnerships.
+      </p>
     </div>
 
-    <div class="features">
+    <div class="grid-4">
       <div class="feature">Driver-First Service</div>
       <div class="feature">Honest Communication</div>
       <div class="feature">Better Rate Negotiation</div>
       <div class="feature">Reduced Deadhead Miles</div>
-      <div class="feature">Nationwide Support</div>
+      <div class="feature">Nationwide Dispatch Support</div>
       <div class="feature">Fast Response Times</div>
       <div class="feature">Long-Term Partnerships</div>
       <div class="feature">Professional Representation</div>
@@ -502,7 +108,7 @@
   </div>
 </section>
 
-<section id="about" class="soft">
+<section class="section section-soft">
   <div class="container split">
     <div>
       <p class="eyebrow">About GraniteSky</p>
@@ -511,16 +117,20 @@
         GraniteSky Dispatching was founded with one goal: helping independent truck drivers and small fleets succeed.
         We understand that every load matters and every mile impacts your business.
       </p>
+      <br>
       <p>
         Our team works hard to keep your trucks moving while building long-term relationships based on trust,
         reliability, and exceptional service.
       </p>
+      <br>
+      <a href="about.html" class="btn btn-primary">Learn More</a>
     </div>
+
     <div class="photo-card"></div>
   </div>
 </section>
 
-<section>
+<section class="section">
   <div class="container">
     <div class="section-title">
       <p class="eyebrow">How It Works</p>
@@ -528,89 +138,64 @@
     </div>
 
     <div class="steps">
-      <div class="step"><strong>01</strong><h3>Complete Application</h3><p>Submit your carrier application.</p></div>
-      <div class="step"><strong>02</strong><h3>Submit Documents</h3><p>Send your carrier documents for setup.</p></div>
-      <div class="step"><strong>03</strong><h3>Start Moving Freight</h3><p>We begin finding and negotiating profitable loads.</p></div>
+      <div class="step">
+        <strong>01</strong>
+        <h3>Complete Application</h3>
+        <p>Submit your carrier application with your basic company and equipment details.</p>
+      </div>
+
+      <div class="step">
+        <strong>02</strong>
+        <h3>Submit Documents</h3>
+        <p>Send the documents needed for dispatch setup and broker communication.</p>
+      </div>
+
+      <div class="step">
+        <strong>03</strong>
+        <h3>Start Moving Freight</h3>
+        <p>We begin finding and negotiating profitable freight for your truck.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="carrier" class="soft">
-  <div class="container">
-    <div class="section-title">
+<section class="cta-band">
+  <div class="container split">
+    <div>
       <p class="eyebrow">Become a Carrier</p>
       <h2>Ready to Partner With GraniteSky?</h2>
       <p>Let GraniteSky Dispatching handle the logistics while you focus on driving.</p>
     </div>
 
-    <form action="https://formsubmit.co/graniteskydispatch@yahoo.com" method="POST">
-      <input type="text" name="Full Name" placeholder="Full Name" required>
-      <input type="text" name="Company Name" placeholder="Company Name">
-      <input type="tel" name="Phone Number" placeholder="Phone Number" required>
-      <input type="email" name="Email Address" placeholder="Email Address" required>
-      <input type="text" name="MC Number" placeholder="MC Number">
-      <input type="text" name="DOT Number" placeholder="DOT Number">
-      <input type="text" name="Equipment Type" placeholder="Equipment Type">
-      <input type="text" name="Number of Trucks" placeholder="Number of Trucks">
-      <input type="text" name="Preferred Lanes" placeholder="Preferred Lanes">
-      <textarea name="Message" placeholder="Message"></textarea>
-      <button class="btn primary" type="submit">Apply Now</button>
-    </form>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container contact-grid">
-    <div class="contact-info">
-      <p class="eyebrow">Contact</p>
-      <h2>Contact GraniteSky Dispatching</h2>
-      <p><strong>Phone:</strong><br><a href="tel:9189245542">(918) 924-5542</a></p>
-      <p><strong>Email:</strong><br><a href="mailto:graniteskydispatch@yahoo.com">graniteskydispatch@yahoo.com</a></p>
-      <p><strong>Business Hours:</strong><br>
-        Monday – Friday: 7:00 AM – 6:00 PM CST<br>
-        Saturday: By Appointment<br>
-        Sunday: Closed
-      </p>
+    <div class="btn-row">
+      <a href="become-a-carrier.html" class="btn btn-primary">Apply Now</a>
+      <a href="contact.html" class="btn btn-secondary">Contact Us</a>
     </div>
-
-    <form action="https://formsubmit.co/graniteskydispatch@yahoo.com" method="POST">
-      <input type="text" name="Name" placeholder="Name" required>
-      <input type="tel" name="Phone" placeholder="Phone">
-      <input type="email" name="Email" placeholder="Email" required>
-      <textarea name="Message" placeholder="Message" required></textarea>
-      <button class="btn primary" type="submit">Send Message</button>
-    </form>
   </div>
 </section>
 
-<footer>
-  <img src="logo.png" alt="GraniteSky Dispatching Logo">
-  <h3>GraniteSky Dispatching</h3>
-  <p>Supporting the Backbone of American Freight.</p>
-  <p>(918) 924-5542 | graniteskydispatch@yahoo.com</p>
-  <p>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#carrier">Become a Carrier</a>
-    <a href="#contact">Contact</a>
-  </p>
+<footer class="site-footer">
+  <div class="container">
+    <img src="logo.png" alt="GraniteSky Dispatching Logo">
+    <h3>GraniteSky Dispatching</h3>
+    <p>Supporting the Backbone of American Freight.</p>
+    <p>
+      <a href="tel:9189245542">(918) 924-5542</a> |
+      <a href="mailto:graniteskydispatch@yahoo.com">graniteskydispatch@yahoo.com</a>
+    </p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="become-a-carrier.html">Become a Carrier</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
 </footer>
 
-<script>
-  const menuBtn = document.getElementById("menuBtn");
-  const navLinks = document.getElementById("navLinks");
-
-  menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
-
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-    });
-  });
-</script>
+</body>
+</html>
 
 </body>
 </html>
