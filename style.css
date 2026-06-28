@@ -1,1 +1,490 @@
+:root {
+  --navy: #0F2747;
+  --navy-dark: #071728;
+  --granite: #4A4F57;
+  --blue: #1E88E5;
+  --light-blue: #72C6FF;
+  --white: #FFFFFF;
+  --soft: #F4F8FC;
+  --line: rgba(15, 39, 71, 0.12);
+  --shadow: 0 22px 60px rgba(15, 39, 71, 0.14);
+}
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--white);
+  color: var(--navy-dark);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(1200px, 92%);
+  margin: auto;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(15, 39, 71, 0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.navbar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+.logo img {
+  height: 54px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  color: white;
+  font-size: .96rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  opacity: .92;
+  transition: .25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--light-blue);
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--blue), var(--light-blue));
+  padding: 11px 18px;
+  border-radius: 999px;
+  color: white !important;
+  box-shadow: 0 12px 28px rgba(30,136,229,.28);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 145px 0 90px;
+  color: white;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(7,23,40,.94), rgba(15,39,71,.68), rgba(15,39,71,.22)),
+    url("hero-truck.png") center/cover no-repeat;
+}
+
+.page-hero {
+  min-height: 54vh;
+  padding: 150px 0 80px;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(7,23,40,.95), rgba(15,39,71,.72)),
+    url("hero-truck.png") center/cover no-repeat;
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.eyebrow {
+  color: var(--light-blue);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: .82rem;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 6.6rem);
+  line-height: .95;
+  letter-spacing: -3px;
+  margin-bottom: 20px;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.7rem, 5vw, 5rem);
+}
+
+h2 {
+  color: var(--navy);
+  font-size: clamp(2rem, 4vw, 3.35rem);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+}
+
+.hero h2,
+.page-hero h2 {
+  color: white;
+  font-size: clamp(1.45rem, 3vw, 2.3rem);
+}
+
+.hero p,
+.page-hero p {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,.9);
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+
+p {
+  color: var(--granite);
+}
+
+.hero p,
+.page-hero p,
+.dark p {
+  color: rgba(255,255,255,.86);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  padding: 15px 25px;
+  border-radius: 999px;
+  font-weight: 900;
+  transition: .28s;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue), var(--light-blue));
+  color: white;
+  box-shadow: 0 15px 35px rgba(30,136,229,.32);
+}
+
+.btn-secondary {
+  color: white;
+  border: 1px solid rgba(255,255,255,.5);
+  background: rgba(255,255,255,.1);
+}
+
+.btn-dark {
+  background: var(--navy);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.section {
+  padding: 95px 0;
+}
+
+.section-soft {
+  background: var(--soft);
+}
+
+.section-dark {
+  background:
+    linear-gradient(rgba(15,39,71,.96), rgba(15,39,71,.96)),
+    url("hero-truck.png") center/cover no-repeat;
+  color: white;
+}
+
+.section-dark h2 {
+  color: white;
+}
+
+.section-title {
+  max-width: 780px;
+  margin-bottom: 45px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  padding: 32px;
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h3 {
+  color: var(--navy);
+  font-size: 1.28rem;
+  margin-bottom: 10px;
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--blue), var(--light-blue));
+  color: white;
+  font-size: 1.45rem;
+  margin-bottom: 20px;
+}
+
+.feature {
+  padding: 22px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.16);
+  color: white;
+  font-weight: 900;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.photo-card {
+  min-height: 440px;
+  border-radius: 30px;
+  background: url("hero-truck.png") center/cover no-repeat;
+  box-shadow: 0 28px 70px rgba(15,39,71,.22);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.step {
+  padding: 34px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--blue);
+}
+
+.step strong {
+  display: block;
+  color: var(--blue);
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 17px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 16px;
+  border-radius: 15px;
+  border: 1px solid rgba(15,39,71,.18);
+  font: inherit;
+  background: white;
+}
+
+textarea {
+  grid-column: span 2;
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-grid button {
+  grid-column: span 2;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 40px;
+}
+
+.contact-panel {
+  background: var(--navy);
+  color: white;
+  padding: 38px;
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.contact-panel h2 {
+  color: white;
+}
+
+.contact-panel p {
+  color: rgba(255,255,255,.86);
+  margin-bottom: 16px;
+}
+
+.contact-panel a {
+  color: var(--light-blue);
+  font-weight: 900;
+}
+
+.cta-band {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: white;
+  padding: 65px 0;
+}
+
+.cta-band h2 {
+  color: white;
+}
+
+.site-footer {
+  background: var(--navy-dark);
+  color: white;
+  padding: 48px 0;
+  text-align: center;
+}
+
+.site-footer img {
+  height: 75px;
+  margin: 0 auto 16px;
+}
+
+.site-footer p {
+  color: rgba(255,255,255,.78);
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.footer-links a {
+  color: var(--light-blue);
+  font-weight: 800;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: .7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 930px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 82px;
+    left: 0;
+    width: 100%;
+    background: var(--navy);
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .grid-3,
+  .grid-4,
+  .steps,
+  .split,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  textarea,
+  .form-grid button {
+    grid-column: span 1;
+  }
+
+  .hero {
+    background:
+      linear-gradient(rgba(7,23,40,.88), rgba(7,23,40,.88)),
+      url("hero-truck.png") center/cover no-repeat;
+  }
+
+  .logo span {
+    display: none;
+  }
+}
